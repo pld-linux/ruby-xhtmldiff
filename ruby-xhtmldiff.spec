@@ -2,11 +2,11 @@
 %define ruby_rubylibdir %(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
 Summary:	Ruby XHTML difference finder
 Name:		ruby-xhtmldiff
-Version:	1.0.0
+Version:	1.2.0
 Release:	1
 License:	Ruby's
 Source0:		http://theinternetco.net/projects/ruby/xhtmldiff-%{version}.tar.gz
-# Source0-md5:	ed14f163a4e755714f455b6e4bac16fb
+# Source0-md5:	bfe68b63d44759247f8271ae60475d32
 Group:		Development/Libraries
 URL:	http://theinternetco.net/projects/ruby/xhtmldiff
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
