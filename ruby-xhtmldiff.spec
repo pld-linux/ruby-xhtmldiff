@@ -4,7 +4,7 @@ Summary:	Ruby XHTML difference finder
 Name:		ruby-xhtmldiff
 Version:	1.0.0
 Release:	1
-License:	GPL
+License:	Ruby's
 Source0:		http://theinternetco.net/projects/ruby/xhtmldiff-%{version}.tar.gz
 # Source0-md5:	ed14f163a4e755714f455b6e4bac16fb
 Group:		Development/Libraries
