@@ -11,6 +11,7 @@ Source0:	http://theinternetco.net/projects/ruby/xhtmldiff-%{version}.tar.gz
 Group:		Development/Libraries
 URL:		http://theinternetco.net/projects/ruby/xhtmldiff
 BuildRequires:	ruby
+Requires: ruby-Diff-LCS
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
