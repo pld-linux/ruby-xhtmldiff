@@ -1,5 +1,3 @@
-%define ruby_archdir    %(ruby -r rbconfig -e 'print Config::CONFIG["archdir"]')
-%define ruby_rubylibdir %(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
 Summary:	Ruby XHTML difference finder
 Summary(pl):	Narzêdzie do znajdywania ró¿nic w XHTML-u napisane w Rubym
 Name:		ruby-xhtmldiff
@@ -10,8 +8,9 @@ Source0:	http://theinternetco.net/projects/ruby/xhtmldiff-%{version}.tar.gz
 # Source0-md5:	bfe68b63d44759247f8271ae60475d32
 Group:		Development/Libraries
 URL:		http://theinternetco.net/projects/ruby/xhtmldiff
+BuildRequires:	rpmbuild(macros) >= 1.263
 BuildRequires:	ruby
-Requires: ruby-Diff-LCS
+Requires:	ruby-Diff-LCS
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
