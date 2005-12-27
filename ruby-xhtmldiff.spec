@@ -2,14 +2,14 @@ Summary:	Ruby XHTML difference finder
 Summary(pl):	Narzêdzie do znajdywania ró¿nic w XHTML-u napisane w Rubym
 Name:		ruby-xhtmldiff
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	Ruby
 Source0:	http://theinternetco.net/projects/ruby/xhtmldiff-%{version}.tar.gz
 # Source0-md5:	bfe68b63d44759247f8271ae60475d32
 Group:		Development/Libraries
 URL:		http://theinternetco.net/projects/ruby/xhtmldiff
 BuildRequires:	rpmbuild(macros) >= 1.263
-BuildRequires:	ruby
+BuildRequires:	ruby-modules
 Requires:	ruby-Diff-LCS
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
