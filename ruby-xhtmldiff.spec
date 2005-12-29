@@ -8,9 +8,10 @@ Source0:	http://theinternetco.net/projects/ruby/xhtmldiff-%{version}.tar.gz
 # Source0-md5:	bfe68b63d44759247f8271ae60475d32
 Group:		Development/Libraries
 URL:		http://theinternetco.net/projects/ruby/xhtmldiff
-BuildRequires:	rpmbuild(macros) >= 1.263
+BuildRequires:	rpmbuild(macros) >= 1.277
 BuildRequires:	ruby-modules
 Requires:	ruby-Diff-LCS
+%ruby_mod_ver_requires_eq
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
