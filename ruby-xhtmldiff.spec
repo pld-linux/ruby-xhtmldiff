@@ -1,5 +1,5 @@
 Summary:	Ruby XHTML difference finder
-Summary(pl):	Narz�dzie do znajdywania r�nic w XHTML-u napisane w Rubym
+Summary(pl.UTF-8):   Narzędzie do znajdywania różnic w XHTML-u napisane w Rubym
 Name:		ruby-xhtmldiff
 Version:	1.2.0
 Release:	2
@@ -18,20 +18,20 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 XHTMLDiff finds the difference between any two XHTML documents and
 returns the result as valid XHTML with <ins> and <del> tags.
 
-%description -l pl
-XHTMLDiff znajduje r�nice mi�dzy dwoma dokumentami XHTML i zwraca
+%description -l pl.UTF-8
+XHTMLDiff znajduje różnice między dwoma dokumentami XHTML i zwraca
 wynik jako poprawny XHTML ze znacznikami <ins> i <del>.
 
 %package -n xhtmldiff
 Summary:	Find differences in XHTML documents
-Summary(pl):	Znajdywanie r�nic w dokumentach XHTML
+Summary(pl.UTF-8):   Znajdywanie różnic w dokumentach XHTML
 Group:		Applications/Text
 
 %description -n xhtmldiff
 Find differences in XHTML documents.
 
-%description -n xhtmldiff -l pl
-Znajdywanie r�nic w dokumentach XHTML.
+%description -n xhtmldiff -l pl.UTF-8
+Znajdywanie różnic w dokumentach XHTML.
 
 %prep
 %setup -q -n xhtmldiff-%{version}
