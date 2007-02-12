@@ -1,5 +1,5 @@
 Summary:	Ruby XHTML difference finder
-Summary(pl.UTF-8):   Narzędzie do znajdywania różnic w XHTML-u napisane w Rubym
+Summary(pl.UTF-8):	Narzędzie do znajdywania różnic w XHTML-u napisane w Rubym
 Name:		ruby-xhtmldiff
 Version:	1.2.0
 Release:	2
@@ -24,7 +24,7 @@ wynik jako poprawny XHTML ze znacznikami <ins> i <del>.
 
 %package -n xhtmldiff
 Summary:	Find differences in XHTML documents
-Summary(pl.UTF-8):   Znajdywanie różnic w dokumentach XHTML
+Summary(pl.UTF-8):	Znajdywanie różnic w dokumentach XHTML
 Group:		Applications/Text
 
 %description -n xhtmldiff
