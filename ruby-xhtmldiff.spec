@@ -1,16 +1,18 @@
+%define pkgname xhtmldiff
 Summary:	Ruby XHTML difference finder
 Summary(pl.UTF-8):	Narzędzie do znajdywania różnic w XHTML-u napisane w Rubym
-Name:		ruby-xhtmldiff
-Version:	1.2.0
-Release:	2
+Name:		ruby-%{pkgname}
+Version:	1.2.2
+Release:	1
 License:	Ruby
-Source0:	http://theinternetco.net/projects/ruby/xhtmldiff-%{version}.tar.gz
-# Source0-md5:	bfe68b63d44759247f8271ae60475d32
+Source0:	http://theinternetco.net/projects/ruby/%{pkgname}-%{version}.tar.gz
+# Source0-md5:	b1536c3a2f378a4e918dcc5fae2038b3
 Group:		Development/Libraries
 URL:		http://theinternetco.net/projects/ruby/xhtmldiff
-BuildRequires:	rpmbuild(macros) >= 1.277
+BuildRequires:	rpmbuild(macros) >= 1.484
+BuildRequires:	ruby >= 1:1.8.6
 BuildRequires:	ruby-modules
-Requires:	ruby-Diff-LCS
+Requires:	ruby-diff-lcs
 %{?ruby_mod_ver_requires_eq}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -21,6 +23,30 @@ returns the result as valid XHTML with <ins> and <del> tags.
 %description -l pl.UTF-8
 XHTMLDiff znajduje różnice między dwoma dokumentami XHTML i zwraca
 wynik jako poprawny XHTML ze znacznikami <ins> i <del>.
+
+%package rdoc
+Summary:	HTML documentation for %{pkgname}
+Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla %{pkgname}
+Group:		Documentation
+Requires:	ruby >= 1:1.8.7-4
+
+%description rdoc
+HTML documentation for %{pkgname}.
+
+%description rdoc -l pl.UTF-8
+Dokumentacja w formacie HTML dla %{pkgname}.
+
+%package ri
+Summary:	ri documentation for %{pkgname}
+Summary(pl.UTF-8):	Dokumentacja w formacie ri dla %{pkgname}
+Group:		Documentation
+Requires:	ruby
+
+%description ri
+ri documentation for %{pkgname}.
+
+%description ri -l pl.UTF-8
+Dokumentacji w formacie ri dla %{pkgname}.
 
 %package -n xhtmldiff
 Summary:	Find differences in XHTML documents
@@ -34,17 +60,25 @@ Find differences in XHTML documents.
 Znajdywanie różnic w dokumentach XHTML.
 
 %prep
-%setup -q -n xhtmldiff-%{version}
+%setup -q -n %{pkgname}-%{version}
 
 %build
 ruby setup.rb config --site-ruby=%{ruby_rubylibdir} --so-dir=%{ruby_archdir}
 ruby setup.rb setup
 
+rdoc --ri --op ri lib
+rdoc --op rdoc lib
+rm -r ri/{Math,REXML}
+rm ri/created.rid
+
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{ruby_rubylibdir}
+install -d $RPM_BUILD_ROOT{%{ruby_rubylibdir},%{ruby_ridir},%{ruby_rdocdir}}
 
 ruby setup.rb install --prefix=$RPM_BUILD_ROOT
+
+cp -a ri/* $RPM_BUILD_ROOT%{ruby_ridir}
+cp -a rdoc $RPM_BUILD_ROOT%{ruby_rdocdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -52,6 +86,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %{ruby_rubylibdir}/xhtmldiff*
+
+%files rdoc
+%defattr(644,root,root,755)
+%{ruby_rdocdir}/%{name}-%{version}
+
+%files ri
+%defattr(644,root,root,755)
+%{ruby_ridir}/XHTMLDiff
 
 %files -n xhtmldiff
 %defattr(644,root,root,755)
