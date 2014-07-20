@@ -3,7 +3,7 @@ Summary:	Ruby XHTML difference finder
 Summary(pl.UTF-8):	Narzędzie do znajdywania różnic w XHTML-u napisane w Rubym
 Name:		ruby-%{pkgname}
 Version:	1.2.2
-Release:	1
+Release:	2
 License:	Ruby
 Source0:	http://theinternetco.net/projects/ruby/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	b1536c3a2f378a4e918dcc5fae2038b3
