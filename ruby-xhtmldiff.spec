@@ -3,17 +3,16 @@ Summary:	Ruby XHTML difference finder
 Summary(pl.UTF-8):	Narzędzie do znajdywania różnic w XHTML-u napisane w Rubym
 Name:		ruby-%{pkgname}
 Version:	1.2.2
-Release:	2
+Release:	3
 License:	Ruby
 Source0:	http://theinternetco.net/projects/ruby/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	b1536c3a2f378a4e918dcc5fae2038b3
 Group:		Development/Libraries
 URL:		http://theinternetco.net/projects/ruby/xhtmldiff
-BuildRequires:	rpmbuild(macros) >= 1.484
-BuildRequires:	ruby >= 1:1.8.6
-BuildRequires:	ruby-modules
+BuildRequires:	rpm-rubyprov
+BuildRequires:	rpmbuild(macros) >= 1.665
 Requires:	ruby-diff-lcs
-%{?ruby_mod_ver_requires_eq}
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,19 +62,19 @@ Znajdywanie różnic w dokumentach XHTML.
 %setup -q -n %{pkgname}-%{version}
 
 %build
-ruby setup.rb config --site-ruby=%{ruby_rubylibdir} --so-dir=%{ruby_archdir}
-ruby setup.rb setup
-
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
 rm -r ri/{Math,REXML}
 rm ri/created.rid
+rm ri/cache.ri
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{ruby_rubylibdir},%{ruby_ridir},%{ruby_rdocdir}}
+install -d $RPM_BUILD_ROOT{%{ruby_vendorlibdir},%{ruby_ridir},%{ruby_rdocdir},%{_bindir}}
 
-ruby setup.rb install --prefix=$RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{ruby_vendorlibdir}
+cp -a lib/* $RPM_BUILD_ROOT%{ruby_vendorlibdir}
+cp -a bin/* $RPM_BUILD_ROOT%{_bindir}
 
 cp -a ri/* $RPM_BUILD_ROOT%{ruby_ridir}
 cp -a rdoc $RPM_BUILD_ROOT%{ruby_rdocdir}/%{name}-%{version}
@@ -85,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{ruby_rubylibdir}/xhtmldiff*
+%{ruby_vendorlibdir}/xhtmldiff.rb
 
 %files rdoc
 %defattr(644,root,root,755)
@@ -97,4 +96,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n xhtmldiff
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/xhtmldiff
